@@ -1,15 +1,11 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Environment') {
-            steps {
-                sh 'echo $PATH'
-                sh 'which mvn || true'
-                sh 'which java || true'
-            }
-        }
+    tools {
+        maven 'Maven-3.10'
+    }
 
+    stages {
         stage('Build') {
             steps {
                 sh 'mvn validate'
